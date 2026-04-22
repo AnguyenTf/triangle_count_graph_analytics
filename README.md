@@ -29,4 +29,6 @@ Key things I learned were
 ### How it works
 
 
-1) 
+1) Takes a files that contains ordered/unordered edges
+2) Normalize each edge so that u < v
+3) 
