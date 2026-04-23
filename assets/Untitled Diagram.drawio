@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="U78lzK8O4glDWjCII1V1">
+    <mxGraphModel dx="2715" dy="2774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="OtnFpatezo-fonxreqqc-43" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#E6E6E6);" value="" vertex="1">
+          <mxGeometry height="850" width="2080" x="-50" y="-70" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#b1ddf0, #e3f2fd);strokeColor=#10739e;" value="" vertex="1">
+          <mxGeometry height="230" width="1170" x="10" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#B1DDF0,#99FFFF);strokeColor=light-dark(#000000,#000000);" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;CPU (Host)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="120" x="20" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="src/main.cpp" vertex="1">
+          <mxGeometry height="40" width="110" x="100" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-22" edge="1" parent="1" source="OtnFpatezo-fonxreqqc-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=1;strokeColor=light-dark(default, #d3d3d3);" target="OtnFpatezo-fonxreqqc-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="src/graph_loader.cpp" vertex="1">
+          <mxGeometry height="50" width="170" x="385" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-12" edge="1" parent="1" source="OtnFpatezo-fonxreqqc-3" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#CCCCCC);curved=1;" target="OtnFpatezo-fonxreqqc-4" value="&lt;span style=&quot;background-color: rgb(0, 0, 0);&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Read .txt&lt;/font&gt;&lt;/span&gt;">
+          <mxGeometry relative="1" x="0.0321" y="2" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="420" y="540" as="sourcePoint" />
+            <mxPoint x="520" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#D5E8D4,#FFF3E0);strokeColor=light-dark(#82b366, #f5c470);" value="" vertex="1">
+          <mxGeometry height="230" width="1380" x="580" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-36" edge="1" parent="1" source="OtnFpatezo-fonxreqqc-18" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeColor=light-dark(#D6B656,#CCCCCC);" target="OtnFpatezo-fonxreqqc-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="include/graph.hpp" vertex="1">
+          <mxGeometry height="50" width="170" x="630" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#82b366;fillColor=light-dark(#d5e8d4, #e8f5e9);" value="" vertex="1">
+          <mxGeometry height="120" width="360" x="1280" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="src/csr_converter.cpp" vertex="1">
+          <mxGeometry height="50" width="170" x="890" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-38" edge="1" parent="1" source="OtnFpatezo-fonxreqqc-24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#CCCCCC);curved=0;" target="OtnFpatezo-fonxreqqc-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=light-dark(#000000,#F5C470);" value="include/csr&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;.hpp&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="170" x="1130" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="src/triangle_count.cu" vertex="1">
+          <mxGeometry height="40" width="145" x="1450" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-41" edge="1" parent="1" source="OtnFpatezo-fonxreqqc-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#CCCCCC);" target="OtnFpatezo-fonxreqqc-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="include/triangle&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;.hpp&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="170" x="1720" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-29" edge="1" parent="1" source="OtnFpatezo-fonxreqqc-4" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#CCCCCC);exitX=1;exitY=0.5;exitDx=0;exitDy=0;edgeStyle=entityRelationEdgeStyle;" target="OtnFpatezo-fonxreqqc-18" value="&lt;span style=&quot;background-color: rgb(0, 0, 0);&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Build Graph&lt;/font&gt;&lt;/span&gt;">
+          <mxGeometry relative="1" x="0.0745" y="-5" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <mxPoint x="550" y="614" as="sourcePoint" />
+            <mxPoint x="725" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-34" edge="1" parent="1" source="OtnFpatezo-fonxreqqc-23" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#CCCCCC);exitX=1;exitY=0.5;exitDx=0;exitDy=0;edgeStyle=entityRelationEdgeStyle;" target="OtnFpatezo-fonxreqqc-24" value="&lt;span style=&quot;background-color: rgb(0, 0, 0);&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Convert to CSR&lt;/font&gt;&lt;/span&gt;">
+          <mxGeometry relative="1" x="0.3875" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="960" y="955" as="sourcePoint" />
+            <mxPoint x="1130" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-40" edge="1" parent="1" source="OtnFpatezo-fonxreqqc-20" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#CCCCCC);exitX=1;exitY=0.5;exitDx=0;exitDy=0;edgeStyle=entityRelationEdgeStyle;curved=0;" target="OtnFpatezo-fonxreqqc-27" value="&lt;span style=&quot;background-color: rgb(0, 0, 0);&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Triangle Count (CUDA)&lt;/font&gt;&lt;/span&gt;">
+          <mxGeometry relative="1" x="0.0578" y="4" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1340" y="680" as="sourcePoint" />
+            <mxPoint x="1420" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-45" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFE6CC,#FFB570);strokeColor=#d79b00;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Headers / Interfaces&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="140" x="590" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="OtnFpatezo-fonxreqqc-46" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=light-dark(#000000,#000000);fillColor=light-dark(#D5E8D4,#CCFF99);" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GPU (Device)&lt;/font&gt;&lt;div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="1290" y="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
