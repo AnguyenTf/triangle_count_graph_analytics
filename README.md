@@ -2,34 +2,41 @@
 
 ![CUDA Graph Pipeline](assets/triangle_count.png)
 
-## Introducing Triangle Counting for Graph Analytics in CUDA & C++
+## Overview
 
-In this repository, I designed and implemented a fully high performance GPU implementation of triangle counting using CUDA and C++, built from the ground up with a custom graph loader, CSR converter, and GPU kernel. This project demonstrates how to design a complete graph anlytics pipeline optimized for parallel execution on NVIDIA GPUs.
+This repository is my deep dive into GPU-accelerated graph analytics, built entirely form scratch using CUDA and C++. I didn't want to just write a kernel, I wanted to understand the whoe pipeline: from loading in messy data, converting it into a clean CSR layout, and then pushing it through a GPU kernel that can handle millions of edges in parallel. 
+
+Along the way, I used Nsight Systems and Nsight Compute to study how my code actually behaves on the GPU, not in theory, but in real hardware. This project became a hands-on way for me to learn how high-performance GPU systems are designed, debugged, and optimized.
 
 ---
 
 ### Why this project matters 
 
-I built this project because I wanted to understand what really goes into GPU-accelerated graph analytics, and not just writing a CUDA kernel, but everything around it. I thought this project turned out to be the perfect challenge: it's simple to describe, but it forces me to think carefully about data layout, memory access patterns, and how GPUs behave when the work isn't perfectly regular. Working through this from scratch taught me a lot about how high performnace systems are built. I had to design a graph loader that doesn't fall apart on a messy input, build a CSR converter that produces clean and sorted adjacency lists, and then write a kernel that can handle thousands of edges in parallel. 
+I've always been fascinated by how GPUs go through massive workloads, but I realized I didn't truly understand what happens between "write a kernel" and "get fast results." This project turned out to be the perfect challenge for me:
+
+- It's simple to explain
+- It forces me to think about memory layout
+- It exposes how GPU's behave under irregular workloads
+- It rewards careful engineering
+
+Working through this project taught me how much performance comes from everything around the kernel: the data structures, the memory access patterns, the launch configuration, and the profiling tools that reveal what's really happening under the hood.
 
 ---
 
 ### Highlights
 
-- Full custom graph ingestion pipeline
+- Custom graph ingestion pipeline
 - Clean CSR construction with sorted adjacency lists
 - Memory coalesced structure of arrays layout for edges
 - Safe CUDA error handing with CUDA_CHECK
 - Per-edge parallelism for high GPU throughput
-
----
-### Helpful References
-
-- https://www.nvidia.com/en-us/glossary/graph-analytics/
+- Full performance analysis using Nsight Systems and Nsight Compute
 
 ---
 
-### Project Structure
+### Project Structure + How to build and run the project
+
+To build the project with full support for profiling and source‑level analysis, compile it using:
 
 ```
 accelerated_graph_analytics/
@@ -45,7 +52,16 @@ accelerated_graph_analytics/
 │   ├── main.cpp
 │   └── triangle_count.cu
 ├── triangle_count.exe
+
+nvcc -O3 -std=c++17 -lineinfo -g -Iinclude ^
+  src\triangle_count.cu ^
+  src\main.cpp ^
+  src\graph_loader.cpp ^
+  src\csr_converter.cpp ^
+  -o triangle_count.exe
 ```
+
+---
  
 ### Architecture
 
@@ -56,3 +72,26 @@ accelerated_graph_analytics/
 5) For each edge (u, v), run a two-pointer intersection on neighbors(u) and neighbors(v)
 6) Count all w such that u < v < w
 7) Parallelize the entire process on the GPU
+
+---
+
+### Nsight System
+
+<img width="2283" height="192" alt="image" src="https://github.com/user-attachments/assets/f37dbc00-4c99-4d08-b548-3e28bfaed407" />
+
+---
+
+### Nsight Compute
+
+<img width="2311" height="579" alt="image" src="https://github.com/user-attachments/assets/75ae9d73-6908-4de0-9ac9-d1cd46af2514" />
+
+
+---
+
+### Helpful References
+
+- https://www.nvidia.com/en-us/glossary/graph-analytics/
+- https://www.youtube.com/watch?v=F_BazucyCMw&t=14s
+- https://docs.nvidia.com/nsight-compute/NsightCompute/index.html
+- https://docs.nvidia.com/nsight-systems/UserGuide/index.html#cuda-trace
+
