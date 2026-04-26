@@ -1,4 +1,4 @@
-# Triangle Counting in CUDA & C++ 
+# Triangle Counting in CUDA & C++: Implementation, Profiling, and Optimization
 
 ![CUDA Graph Pipeline](assets/triangle_count.png)
 
@@ -77,7 +77,23 @@ nvcc -O3 -std=c++17 -lineinfo -g -Iinclude ^
 
 ### Nsight System
 
-<img width="2283" height="192" alt="image" src="https://github.com/user-attachments/assets/f37dbc00-4c99-4d08-b548-3e28bfaed407" />
+<img width="2304" height="1221" alt="image" src="https://github.com/user-attachments/assets/520e9c61-a634-4bdc-b09b-b66eefd057fa" />
+
+With Nsight System, I analyzed the behavior of my triangle counting program. The profiler showed that the majority of the runtime was spent in host-to-device memory transfer and repeated cudaMalloc calls. This clearly indicates that the program is memory-bound, not compute bound. 
+
+The CUDA API Summary showed:
+- cudaMalloc: accounted for ~78% of runtime (165 ms across 5 calls)
+- cudaMemcpy: acccounted for ~2.6% of runtime (5.5ms)
+- cudaFree: added another 1.3ms
+- cudaLaunchKernel: added another .60ms
+- cudaDeviceSynchronize: added another .76ms
+
+Key items to look at:
+- cudaMalloc (GPU memory allocation)
+- cudaMemcpy (Host <-> device data transfer)
+- cudaFree (Free GPU memory)
+- cudaLaunchKernel (Launching the kernel)
+- cudaDeviceSynchronize (CPU waits for GPU)
 
 ---
 
@@ -85,8 +101,7 @@ nvcc -O3 -std=c++17 -lineinfo -g -Iinclude ^
 
 <img width="2311" height="579" alt="image" src="https://github.com/user-attachments/assets/75ae9d73-6908-4de0-9ac9-d1cd46af2514" />
 
-
-The initial profiling with Nsight Compute showed COmpute SOl at ~51% and Memory SOl at ~45%, indicating the kernel was neither compute-bound nor memory-bound but instread limited by latency and occupancy. Night's recommendations highlighted uncoalesced global loads, low L1/TEX hit rates, and warp divergence caused by irregular neighbor list lengths.
+The initial profiling with Nsight Compute showed Compute SOl at ~51% and Memory SOl at ~45%, indicating the kernel was neither compute-bound nor memory-bound but instread limited by latency and occupancy. Night's recommendations highlighted uncoalesced global loads, low L1/TEX hit rates, and warp divergence caused by irregular neighbor list lengths.
 
 Uncoalesced global loads: Occurs when threads in the same warp access global memory addresses that are far apart, forcing the GPU to issue multiple memory transactions instead of one. This reduces memory throughput and increases latency.
 Low L1/TEX hit rate: Most memory accesses miss the L1 cache and must be served from slower memory (L2 or DRAM). This happens when threads do not reuse nearby data or access memory irregularly.
