@@ -52,7 +52,9 @@ accelerated_graph_analytics/
 │   ├── main.cpp
 │   └── triangle_count.cu
 ├── triangle_count.exe
+```
 
+```
 nvcc -O3 -std=c++17 -lineinfo -g -Iinclude ^
   src\triangle_count.cu ^
   src\main.cpp ^
@@ -101,11 +103,27 @@ Key items to look at:
 
 <img width="2311" height="579" alt="image" src="https://github.com/user-attachments/assets/75ae9d73-6908-4de0-9ac9-d1cd46af2514" />
 
-The initial profiling with Nsight Compute showed Compute SOl at ~51% and Memory SOl at ~45%, indicating the kernel was neither compute-bound nor memory-bound but instread limited by latency and occupancy. Night's recommendations highlighted uncoalesced global loads, low L1/TEX hit rates, and warp divergence caused by irregular neighbor list lengths.
+The initial profiling with Nsight Compute showed:
+- Compute SOL: ~51%
+- Memory SOL: ~45% 
 
-Uncoalesced global loads: Occurs when threads in the same warp access global memory addresses that are far apart, forcing the GPU to issue multiple memory transactions instead of one. This reduces memory throughput and increases latency.
-Low L1/TEX hit rate: Most memory accesses miss the L1 cache and must be served from slower memory (L2 or DRAM). This happens when threads do not reuse nearby data or access memory irregularly.
-Warp divergence: Occurs when threads in the same warp take different control-flow paths (different branches or loop iterations). The warp must serialize these paths, reducing parallel efficiency.
+This indicates the kernel was neither compute-bound nor memory-bound but instead limited by latency-bound due to memory access patterns and warp inefficiency. 
+
+Night's recommendations highlighted uncoalesced global loads, low L1/TEX hit rates, and warp divergence caused by irregular neighbor list lengths.
+
+Definitions:
+- Uncoalesced global loads: Occurs when threads in the same warp access global memory addresses that are far apart, forcing the GPU to issue multiple memory transactions instead of one. This reduces memory throughput and increases latency.
+- Low L1/TEX hit rate: Most memory accesses miss the L1 cache and must be served from slower memory (L2 or DRAM). This happens when threads do not reuse nearby data or access memory irregularly.
+- Warp divergence: Occurs when threads in the same warp take different control-flow paths (different branches or loop iterations). The warp must serialize these paths, reducing parallel efficiency.
+
+Key items to look at:                             
+- Live Registers: How many  registers are in use at that line. 
+- Attributed Stalls: Why the warp is stalled at that line. 
+- Attributed Live Registers: Registers attributed to that instruction. 
+- Warp Stall (Not-issued Samples): Warp couldn't issue an instruction. 
+- Instruction Mix: What types of instructions run (memory, control, integer). 
+- Instructions Executed: How many instructions executed at that line. 
+- Avg Predicated-On Threads Executed: How many threads actually executed the instruction. 
 
 ---
 
