@@ -79,7 +79,7 @@ nvcc -O3 -std=c++17 -lineinfo -g -Iinclude ^
 
 ### Nsight System
 
-<img width="2304" height="1221" alt="image" src="https://github.com/user-attachments/assets/520e9c61-a634-4bdc-b09b-b66eefd057fa" />
+![Nsight System](assets/nsight_system.png)
 
 With Nsight System, I analyzed the behavior of my triangle counting program. The profiler showed that the majority of the runtime was spent in host-to-device memory transfer and repeated cudaMalloc calls. This clearly indicates that the program is memory-bound, not compute bound. 
 
@@ -101,7 +101,7 @@ Key items to look at:
 
 ### Nsight Compute
 
-<img width="2311" height="579" alt="image" src="https://github.com/user-attachments/assets/75ae9d73-6908-4de0-9ac9-d1cd46af2514" />
+![Nsight Compute](assets/nsight_compute.png)
 
 The initial profiling with Nsight Compute showed:
 - Compute SOL: ~51%
